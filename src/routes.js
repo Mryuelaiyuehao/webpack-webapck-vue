@@ -1,7 +1,12 @@
-const Home = () => import('./views/home.vue');
+const Home = () => import('@/views/home.vue');
+const Nav = () => import('@/views/nav.vue');
 export default [
   {
-    path: '/',
+    path: '/home',
     component: Home,
+  },
+  {
+    path: '/nav',
+    component: Nav,
   },
 ];

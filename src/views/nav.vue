@@ -1,20 +1,23 @@
 <template>
-  <div class="home">
-    Home
+  <div class="nav">
+    Nav
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage',
+  name: 'NavPage',
+  data() {
+    return {};
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.home {
+.nav{
   font-size: 40px;
   text-align: center;
   font-weight: bolder;
-  color: green;
+  color: rebeccapurple;
 }
 </style>
