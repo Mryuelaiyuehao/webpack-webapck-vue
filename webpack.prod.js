@@ -5,16 +5,18 @@ const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+// const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 /** @type {import('webpack').Configuration} */
 module.exports = {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: false,
   entry: {
-    // main: path.resolve(__dirname, './index.js'),
-    entry1: path.resolve(__dirname, './entry1.js'),
+    index: path.resolve(__dirname, './index.js'),
   },
   output: {
-    filename: '[name].[hash:8].js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash:8].js',
   },
   resolve: {
     alias: {
@@ -22,7 +24,43 @@ module.exports = {
     },
   },
   optimization: {
-    minimize: false,
+    minimize: true,
+    minimizer: [new TerserWebpackPlugin()],
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: 3,
+      maxAsyncRequests: 5,
+      minSize: 30000,
+      maxSize: 0,
+      name: true,
+      minChunks: 1,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        vendors_vue: {
+          test: /[\\/]node_modules[\\/](vue)[\\/]/,
+          priority: -5,
+          name: 'vendors_vue',
+        },
+        'vendors_vue-router': {
+          test: /[\\/]node_modules[\\/](vue-router)[\\/]/,
+          priority: -5,
+          name: 'vendors_vue-router',
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+        },
+        default_style: {
+          test: /[\\/]src[\\/]assets[\\/]style/,
+          priority: -20,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -47,8 +85,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      linkType: false,
+      filename: '[name].[contenthash:8].css',
+      linkType: true,
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
@@ -57,13 +95,8 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }),
   ],
-  // stats: {
-  //   all: undefined,
-  //   assets: true,
-  //   assetsSort: 'field',
-  //   builtAt: true,
-  //   version: true,
-  // },
 };
