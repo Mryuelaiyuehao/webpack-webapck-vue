@@ -4,11 +4,11 @@
     @click="handleClick"
   >
     <slot name="icon">
-      <Icon
+      <!-- <Icon
         v-if="icon"
         :name="icon"
         :size="30"
-      />
+      /> -->
     </slot>
     <div :class="`${baseName}-title`">
       <slot name="title">
@@ -29,12 +29,13 @@
       </slot>
     </div>
     <slot name="right-icon">
-      <Icon
-        v-if="isLink"
-        :class="`${baseName}-right-icon`"
-        name="arrow_right_line"
-        :size="30"
-      />
+      <template v-if="isLink">
+        <Icon
+          :class="`${baseName}-right-icon`"
+          name="arrow_right_line"
+          :size="30"
+        />
+      </template>
     </slot>
   </div>
 </template>
@@ -93,6 +94,7 @@ export default {
     },
   },
   data() {
+    console.log(Icon.name);
     return {
       baseName: `${PREFIX_NAME}-cell`,
     };

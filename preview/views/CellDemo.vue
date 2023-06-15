@@ -72,11 +72,9 @@
   </base-view>
 </template>
 <script>
-import NavBar from "../../nav-bar";
-import Cell from "../index.vue";
-import CellGroup from "../../cell-group/index.vue";
+import {NavBar,Cell,CellGroup} from "@/index.js";
 export default {
-  name: "NavBarDemo",
+  name: "CellDemo",
   components: { Cell, CellGroup, NavBar },
   data() {
     return {

@@ -35,7 +35,6 @@
 <script>
 import { NavBar, Popup, Icon } from "@/index.js";
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: "XZYPopup",
   components: { NavBar, Popup, Icon },
   props: {

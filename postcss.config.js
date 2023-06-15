@@ -1,4 +1,5 @@
 const postcssPresetEnv = require('postcss-preset-env');
+const postcssPxtorem = require('postcss-pxtorem');
 /** @type {import('postcss').Processor} */
 module.exports = {
   plugins: [
@@ -6,6 +7,10 @@ module.exports = {
       autoprefixer: {
         grid: 'autoplace',
       },
+    }),
+    postcssPxtorem({
+      rootValue: 75,
+      propList: ['*'],
     }),
   ],
 };

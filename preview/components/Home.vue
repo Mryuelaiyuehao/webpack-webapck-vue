@@ -7,7 +7,7 @@
       slot="header"
       :title="$t('common.title')"
     />
-    <!-- <CellGroup class="cell-group-custom">
+    <CellGroup class="cell-group-custom">
       <Cell
         :title="$t('common.theme')"
         center
@@ -55,7 +55,7 @@
         center
         clickable
       />
-    </CellGroup> -->
+    </CellGroup>
     <XZYPopup
       v-model="langVisible"
       :title="$t('common.languageTitle')"
