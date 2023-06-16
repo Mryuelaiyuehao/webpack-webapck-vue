@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="classNames"
-    :style="styles"
-    @click="onClick"
-  >
+  <div :class="classNames" :style="styles" @click="onClick">
     <div :class="classNodeNames" />
   </div>
 </template>
@@ -89,6 +85,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 $base-name: #{$prefix-name}-switch;
+$size: "small" 62.4px 38.4px 24px 24px 18px, "large" 117px 72px 45px 45px 36px;
 .#{$base-name} {
   position: relative;
   box-sizing: border-box;
@@ -119,8 +116,6 @@ $base-name: #{$prefix-name}-switch;
     }
   }
 }
-
-$size: "small" 62.4px 38.4px 24px 24px 18px, "large" 117px 72px 45px 45px 36px;
 
 @each $name, $width, $height, $nodeWidth, $nodeHeight, $border-radius in $size {
   .#{$base-name}-#{$name} {

@@ -1,29 +1,15 @@
 <template>
-  <div
-    :class="classNames"
-    @click="onClick"
-  >
+  <div :class="classNames" @click="onClick">
     <div :class="`${baseName}-left`">
-      <div
-        v-if="label"
-        :class="`${baseName}-label`"
-      >
+      <div v-if="label" :class="`${baseName}-label`">
         {{ label }}
       </div>
-      <div
-        v-if="desc"
-        :class="`${baseName}-desc`"
-      >
+      <div v-if="desc" :class="`${baseName}-desc`">
         {{ desc }}
       </div>
     </div>
     <div :class="`${baseName}-value`">
-      <Icon
-        v-if="checked"
-        name="select_line"
-        color="primary"
-        :size="42"
-      />
+      <Icon v-if="checked" name="select_line" color="primary" :size="42" />
     </div>
   </div>
 </template>

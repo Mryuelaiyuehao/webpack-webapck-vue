@@ -72,7 +72,7 @@
   </base-view>
 </template>
 <script>
-import {NavBar,Cell,CellGroup} from "@/index.js";
+import { NavBar, Cell, CellGroup } from "@/index.js";
 export default {
   name: "CellDemo",
   components: { Cell, CellGroup, NavBar },

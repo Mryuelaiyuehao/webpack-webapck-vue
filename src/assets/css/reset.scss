@@ -15,8 +15,8 @@ body {
   display: none;
 }
 
-[class*="#{$prefix-name}-"]:focus,
-[class*="#{$prefix-name}-"]:focus-visible {
+[class*='#{$prefix-name}-']:focus,
+[class*='#{$prefix-name}-']:focus-visible {
   outline: none;
 }
 

@@ -1,9 +1,6 @@
 <template>
   <div :class="classNames">
-    <div
-      :class="`${baseName}-left`"
-      @click="clickLeft"
-    >
+    <div :class="`${baseName}-left`" @click="clickLeft">
       <slot name="left">
         <Icon
           v-if="leftArrow"
@@ -19,10 +16,7 @@
         {{ title }}
       </slot>
     </div>
-    <div
-      :class="`${baseName}-right`"
-      @click="clickRight"
-    >
+    <div :class="`${baseName}-right`" @click="clickRight">
       <slot name="right">
         {{ rightText }}
       </slot>
@@ -96,7 +90,7 @@ export default {
       this.$emit("click-left");
     },
     clickRight() {
-      if (!(this.rightText)) {
+      if (!this.rightText) {
         return;
       }
       console.log(this.$slots);

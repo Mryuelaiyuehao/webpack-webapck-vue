@@ -1,10 +1,7 @@
 <template>
   <div :class="`${baseName}`">
     <slot name="title">
-      <div
-        v-if="title"
-        :class="`${baseName}-title`"
-      >
+      <div v-if="title" :class="`${baseName}-title`">
         {{ title }}
       </div>
     </slot>

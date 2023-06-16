@@ -1,45 +1,25 @@
 <template>
   <div :class="`${baseName}`">
-    <transition
-      :name="contentName"
-      appear
-    >
-      <div
-        v-if="value"
-        :class="contentClassNames"
-        :style="customStyle"
-      >
+    <transition :name="contentName" appear>
+      <div v-if="value" :class="contentClassNames" :style="customStyle">
         <slot />
-        <div
-          v-if="closeable"
-          :class="contentIconClassNames"
-          @click="onInput"
-        >
-          <Icon
-            name="close_face"
-            :size="36"
-            color="textRegular"
-          />
+        <div v-if="closeable" :class="contentIconClassNames" @click="onInput">
+          <Icon name="close_face" :size="36" color="textRegular" />
         </div>
       </div>
     </transition>
-    <transition
-      v-if="overlay"
-      :name="`${baseName}-overlay`"
-      appear
-    >
-      <div
-        v-if="value"
-        :class="`${baseName}-overlay`"
-        @click="onInput"
-      />
+    <transition v-if="overlay" :name="`${baseName}-overlay`" appear>
+      <div v-if="value" :class="`${baseName}-overlay`" @click="onInput" />
     </transition>
   </div>
 </template>
 <script>
 import { Icon } from "@/index.js";
 import { PREFIX_NAME } from "@/assets/js/enums";
-import { POPUP_POSITION,POPUP_CLOSE_POSITION } from "@/components/popup/enums.js";
+import {
+  POPUP_POSITION,
+  POPUP_CLOSE_POSITION,
+} from "@/components/popup/enums.js";
 export default {
   name: `${PREFIX_NAME}Popup`,
   components: {
@@ -162,14 +142,23 @@ export default {
 $base-name: #{$prefix-name}-popup;
 
 .#{$base-name} {
+  $positions: "center" 50% initial 50% initial -50% -50% 1 -50% -50% 0,
+    "top" 0 initial 0 initial 0% 0% 1 0% -100% 1,
+    "bottom" initial 0 0 initial 0% 0% 1 0% 100% 1,
+    "left" 0 initial 0 initial 0% 0% 1 -100% 0% 1,
+    "right" initial 0 initial 0 0% 0% 1 100% 0% 1;
+
   width: 100%;
 
   &-content {
+    $icon-positions: "top-left" $space4 $space4 initial initial,
+      "top-right" $space4 initial $space4 initial;
+    $rounds: "center" $space4 $space4 $space4 $space4, "top" 0 0 $space4 $space4,
+      "top" 0 0 $space4 $space4, "bottom" $space4 $space4 0 0,
+      "left" 0 $space4 $space4 0, "right" $space4 0 0 $space4;
+
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     z-index: $z-index-lg;
     overflow: hidden;
     background-color: $c-body-base;
@@ -178,21 +167,11 @@ $base-name: #{$prefix-name}-popup;
       position: absolute;
     }
 
-    $iconPositions: "top-left" $space4 $space4 initial initial,
-      "top-right" $space4 initial $space4 initial;
-
-    @each $position, $top, $left, $right, $bottom in $iconPositions {
+    @each $position, $top, $left, $right, $bottom in $icon-positions {
       &-icon-#{$position} {
-        top: $top;
-        right: $right;
-        bottom: $bottom;
-        left: $left;
+        inset: $top $right $bottom $left;
       }
     }
-
-    $rounds: "center" $space4 $space4 $space4 $space4, "top" 0 0 $space4 $space4,
-      "top" 0 0 $space4 $space4, "bottom" $space4 $space4 0 0,
-      "left" 0 $space4 $space4 0, "right" $space4 0 0 $space4;
 
     @each $position, $t-f, $t-r, $b-r, $b-l in $rounds {
       &-round-#{$position} {
@@ -201,39 +180,9 @@ $base-name: #{$prefix-name}-popup;
     }
   }
 
-  $positions: "center" 50% initial 50% initial -50% -50% 1 -50% -50% 0,
-    "top" 0 initial 0 initial 0% 0% 1 0% -100% 1,
-    "bottom" initial 0 0 initial 0% 0% 1 0% 100% 1,
-    "left" 0 initial 0 initial 0% 0% 1 -100% 0% 1,
-    "right" initial 0 initial 0 0% 0% 1 100% 0% 1;
-
-  @each $position, $top, $bottom, $left, $right, $trans-x-start, $trans-y-start,
-    $scale-start, $trans-x-end, $trans-y-end, $scale-end in $positions
-  {
-    &-content-#{$position} {
-      top: $top;
-      right: $right;
-      bottom: $bottom;
-      left: $left;
-      transform: translate($trans-x-start, $trans-y-start) scale($scale-start);
-    }
-
-    &-content-#{$position}-enter,
-    &-content-#{$position}-leave-to {
-      transform: translate($trans-x-end, $trans-y-end) scale($scale-end);
-    }
-    &-content-#{$position}-enter-active,
-    &-content-#{$position}-leave-active {
-      transition: transform 0.3s ease;
-    }
-  }
-
   &-overlay {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     background-color: $c-mask;
@@ -252,6 +201,24 @@ $base-name: #{$prefix-name}-popup;
   &-overlay-enter-active,
   &-overlay-leave-active {
     transition: opacity 0.3s ease;
+  }
+
+  @each $position, $top, $bottom, $left, $right, $trans-x-start, $trans-y-start,
+    $scale-start, $trans-x-end, $trans-y-end, $scale-end in $positions
+  {
+    &-content-#{$position} {
+      inset: $top $right $bottom $left;
+      transform: translate($trans-x-start, $trans-y-start) scale($scale-start);
+    }
+
+    &-content-#{$position}-enter,
+    &-content-#{$position}-leave-to {
+      transform: translate($trans-x-end, $trans-y-end) scale($scale-end);
+    }
+    &-content-#{$position}-enter-active,
+    &-content-#{$position}-leave-active {
+      transition: transform 0.3s ease;
+    }
   }
 }
 </style>

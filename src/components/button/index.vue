@@ -1,14 +1,7 @@
 <template>
-  <button
-    :class="classNames"
-    :type="nativeType"
-    @click="handleClick"
-  >
+  <button :class="classNames" :type="nativeType" @click="handleClick">
     <div :class="`${baseName}-item`">
-      <slot
-        v-if="isIconLeft"
-        name="icon"
-      >
+      <slot v-if="isIconLeft" name="icon">
         <Icon
           v-if="icon"
           :class="`${baseName}-icon`"
@@ -20,10 +13,7 @@
       <slot>
         <span>{{ text }}</span>
       </slot>
-      <slot
-        v-if="!isIconLeft"
-        name="icon"
-      >
+      <slot v-if="!isIconLeft" name="icon">
         <Icon
           v-if="icon"
           :class="`${baseName}-icon`"
@@ -37,7 +27,11 @@
 </template>
 <script>
 import { PREFIX_NAME } from "@/assets/js/enums";
-import { BUTTON_TYPE, BUTTON_SIZE, BUTTON_ICON_POSITION } from "@/components/button/enums.js";
+import {
+  BUTTON_TYPE,
+  BUTTON_SIZE,
+  BUTTON_ICON_POSITION,
+} from "@/components/button/enums.js";
 import { Icon } from "@/index.js";
 export default {
   name: `${PREFIX_NAME}-cell`,
@@ -155,6 +149,10 @@ export default {
 $base-name: #{$prefix-name}-button;
 
 .#{$base-name} {
+  $types: "primary" $c-white $c-primary, "info" $c-primary var(--primary1),
+    "text" $c-text-secondary $c-body-regular, "link" $c-link $c-body-regular;
+  $sizes: "large" 240px 96px $fs-h5, "small" 90px 60px $fs-h7;
+
   position: relative;
   min-width: 120px;
   height: 72px;
@@ -163,26 +161,6 @@ $base-name: #{$prefix-name}-button;
   color: $c-text-primary;
   background-color: $c-body-base;
   border-width: 0;
-
-  $types: "primary" $c-white $c-primary, "info" $c-primary var(--primary1),
-    "text" $c-text-secondary $c-body-regular, "link" $c-link $c-body-regular;
-
-  @each $type, $color, $bgColor in $types {
-    &-#{$type} {
-      color: $color;
-      background-color: $bgColor;
-    }
-  }
-
-  $sizes: "large" 240px 96px $fs-h5, "small" 90px 60px $fs-h7;
-
-  @each $size, $minWidth, $height, $fontSize in $sizes {
-    &-#{$size} {
-      min-width: $minWidth;
-      height: $height;
-      font-size: $fontSize;
-    }
-  }
 
   &-block {
     display: block;
@@ -201,10 +179,7 @@ $base-name: #{$prefix-name}-button;
 
   &::before {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     content: "";
@@ -222,6 +197,21 @@ $base-name: #{$prefix-name}-button;
     gap: $space-base;
     align-items: center;
     justify-content: center;
+  }
+
+  @each $type, $color, $bgColor in $types {
+    &-#{$type} {
+      color: $color;
+      background-color: $bgColor;
+    }
+  }
+
+  @each $size, $minWidth, $height, $fontSize in $sizes {
+    &-#{$size} {
+      min-width: $minWidth;
+      height: $height;
+      font-size: $fontSize;
+    }
   }
 }
 </style>

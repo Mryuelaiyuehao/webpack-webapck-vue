@@ -40,10 +40,7 @@
       :title="$t('common.radioDemo1Title1')"
       :custom-style="customStyle"
     >
-      <RadioGroup
-        v-model="value"
-        @change="onChange1"
-      >
+      <RadioGroup v-model="value" @change="onChange1">
         <Radio
           v-for="({ desc, name, label }, index) in radioList2"
           :key="index"
@@ -53,14 +50,8 @@
         />
       </RadioGroup>
     </XZYPopup>
-    <XZYPopup
-      v-model="show2"
-      :title="$t('common.radioDemo2Title1')"
-    >
-      <RadioGroup
-        v-model="value2"
-        @change="onChange2"
-      >
+    <XZYPopup v-model="show2" :title="$t('common.radioDemo2Title1')">
+      <RadioGroup v-model="value2" @change="onChange2">
         <Radio
           v-for="({ desc, name, label, disabled }, index) in radioList2"
           :key="index"

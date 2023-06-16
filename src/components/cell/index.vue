@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="classNames"
-    @click="handleClick"
-  >
+  <div :class="classNames" @click="handleClick">
     <slot name="icon">
       <!-- <Icon
         v-if="icon"
@@ -15,10 +12,7 @@
         <span>{{ title }}</span>
       </slot>
       <slot name="label">
-        <div
-          v-if="label"
-          :class="`${baseName}-label`"
-        >
+        <div v-if="label" :class="`${baseName}-label`">
           {{ label }}
         </div>
       </slot>

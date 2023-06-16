@@ -8,16 +8,8 @@
   >
     <base-view>
       <template slot="header">
-        <NavBar
-          v-if="single"
-          :title="title"
-          @click-right="hidePopup"
-        >
-          <Icon
-            slot="right"
-            name="close_line"
-            :size="42"
-          />
+        <NavBar v-if="single" :title="title" @click-right="hidePopup">
+          <Icon slot="right" name="close_line" :size="42" />
         </NavBar>
         <NavBar
           v-else

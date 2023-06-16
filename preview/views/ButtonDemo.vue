@@ -76,7 +76,7 @@
   </base-view>
 </template>
 <script>
-import {NavBar,Button} from "@/index.js";
+import { NavBar, Button } from "@/index.js";
 import { BUTTON_TYPE } from "@/components/button/enums.js";
 export default {
   name: "NavBarDemo",

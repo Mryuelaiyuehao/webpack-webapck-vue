@@ -1,17 +1,8 @@
 <template>
-  <base-view
-    class="home"
-    is-root
-  >
-    <NavBar
-      slot="header"
-      :title="$t('common.title')"
-    />
+  <base-view class="home" is-root>
+    <NavBar slot="header" :title="$t('common.title')" />
     <CellGroup class="cell-group-custom">
-      <Cell
-        :title="$t('common.theme')"
-        center
-      >
+      <Cell :title="$t('common.theme')" center>
         <ul class="theme">
           <li
             v-for="color in primaryColors"
@@ -26,11 +17,7 @@
         </ul>
       </Cell>
       <Cell :title="$t('common.dark')">
-        <XZYSwitch
-          v-model="isDark"
-          size="normal"
-          @input="onChange"
-        />
+        <XZYSwitch v-model="isDark" size="normal" @input="onChange" />
       </Cell>
       <Cell
         :title="$t('common.language')"
@@ -56,14 +43,8 @@
         clickable
       />
     </CellGroup>
-    <XZYPopup
-      v-model="langVisible"
-      :title="$t('common.languageTitle')"
-    >
-      <RadioGroup
-        v-model="language"
-        @change="changeLanguage"
-      >
+    <XZYPopup v-model="langVisible" :title="$t('common.languageTitle')">
+      <RadioGroup v-model="language" @change="changeLanguage">
         <Radio
           v-for="({ desc, name, label, disabled }, index) in languageList()"
           :key="index"
@@ -77,14 +58,7 @@
   </base-view>
 </template>
 <script>
-import {
-  NavBar,
-  CellGroup,
-  Cell,
-  Switch,
-  Radio,
-  RadioGroup,
-} from "@/index.js";
+import { NavBar, CellGroup, Cell, Switch, Radio, RadioGroup } from "@/index.js";
 import XZYPopup from "./XZYPopup.vue";
 import { LANGUAGE, DARK_THEME, LIGHT_THEME } from "../statics/js/enums";
 import { generateCssVars, isDarkMode } from "../utils/theme";

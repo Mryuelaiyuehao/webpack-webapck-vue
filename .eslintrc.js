@@ -6,11 +6,15 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'eslint:recommended',
-    'plugin:vue/essential',
-    'plugin:vue/recommended',
+    "eslint:recommended",
+    "plugin:vue/essential",
+    "plugin:vue/recommended",
+    "plugin:prettier/recommended",
   ],
-  rules: {},
-  globals: {},
-  ignorePatterns: ['dist', 'node_modules'],
+  plugins: ["prettier"],
+  globals: {
+    window: "readonly",
+    document: "readonly",
+  },
+  ignorePatterns: ["dist", "node_modules"],
 };

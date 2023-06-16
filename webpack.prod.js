@@ -1,33 +1,33 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 // const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 /** @type {import('webpack').Configuration} */
 module.exports = {
-  mode: 'production',
+  mode: "production",
   devtool: false,
   entry: {
-    index: path.resolve(__dirname, './index.js'),
+    index: path.resolve(__dirname, "./index.js"),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash:8].js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash:8].js",
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   optimization: {
     minimize: true,
     minimizer: [new TerserWebpackPlugin()],
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       maxInitialRequests: 3,
       maxAsyncRequests: 5,
       minSize: 30000,
@@ -42,12 +42,12 @@ module.exports = {
         vendors_vue: {
           test: /[\\/]node_modules[\\/](vue)[\\/]/,
           priority: -5,
-          name: 'vendors_vue',
+          name: "vendors_vue",
         },
-        'vendors_vue-router': {
+        "vendors_vue-router": {
           test: /[\\/]node_modules[\\/](vue-router)[\\/]/,
           priority: -5,
-          name: 'vendors_vue-router',
+          name: "vendors_vue-router",
         },
         default: {
           minChunks: 2,
@@ -66,32 +66,32 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        use: ['vue-loader'],
+        use: ["vue-loader"],
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.s[ac]ss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
         ],
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:8].css',
+      filename: "[name].[contenthash:8].css",
       linkType: true,
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html'),
-      filename: 'index.html',
-      title: 'webpack 中使用vue',
+      template: path.resolve(__dirname, "./public/index.html"),
+      filename: "index.html",
+      title: "webpack 中使用vue",
     }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
