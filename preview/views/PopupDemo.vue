@@ -10,9 +10,9 @@
     <card :title="$t('common.popupDemo1')">
       <CellGroup>
         <Cell
-          v-for="({ title }, index) in popupList1()"
+          v-for="(item, index) in popupList1()"
           :key="index"
-          :title="title"
+          :title="item.title"
           is-link
           clickable
           @click="handleClick1"
@@ -23,12 +23,12 @@
     <card :title="$t('common.popupDemo2')">
       <CellGroup>
         <Cell
-          v-for="({ title, position }, index) in popupList2()"
+          v-for="(item, index) in popupList2()"
           :key="index"
-          :title="title"
+          :title="item.title"
           is-link
           clickable
-          @click="() => handleClick2(position)"
+          @click="() => handleClick2(item.position)"
         >
         </Cell>
       </CellGroup>
@@ -36,9 +36,9 @@
     <card :title="$t('common.popupDemo3')">
       <CellGroup>
         <Cell
-          v-for="({ title }, index) in popupList3()"
+          v-for="(item, index) in popupList3()"
           :key="index"
-          :title="title"
+          :title="item.title"
           is-link
           clickable
           @click="handleClick3"
@@ -49,12 +49,12 @@
     <card :title="$t('common.popupDemo4')">
       <CellGroup>
         <Cell
-          v-for="({ title, iconPosition }, index) in popupList4()"
+          v-for="(item, index) in popupList4()"
           :key="index"
-          :title="title"
+          :title="item.title"
           is-link
           clickable
-          @click="() => handleClick4(iconPosition)"
+          @click="() => handleClick4(item.iconPosition)"
         >
         </Cell>
       </CellGroup>

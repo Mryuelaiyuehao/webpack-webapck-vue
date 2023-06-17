@@ -11,10 +11,12 @@ module.exports = {
     "plugin:vue/recommended",
     "plugin:prettier/recommended",
   ],
-  plugins: ["prettier"],
   globals: {
     window: "readonly",
     document: "readonly",
+  },
+  rules: {
+    "vue/multi-word-component-names": "off",
   },
   ignorePatterns: ["dist", "node_modules"],
 };

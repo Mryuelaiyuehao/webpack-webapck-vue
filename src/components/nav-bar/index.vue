@@ -90,10 +90,9 @@ export default {
       this.$emit("click-left");
     },
     clickRight() {
-      if (!this.rightText) {
+      if (!(this.rightText || this.$slots?.right)) {
         return;
       }
-      console.log(this.$slots);
       this.$emit("click-right");
     },
   },

@@ -14,8 +14,8 @@
   </div>
 </template>
 <script>
-import { PREFIX_NAME } from "@/assets/js/enums";
 import { Icon } from "@/index.js";
+import { PREFIX_NAME } from "@/assets/js/enums";
 export default {
   name: `${PREFIX_NAME}Radio`,
   components: { Icon },

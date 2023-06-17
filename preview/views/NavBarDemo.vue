@@ -43,8 +43,7 @@
   </base-view>
 </template>
 <script>
-import NavBar from "../index.vue";
-import Icon from "../../icon/index.vue";
+import { NavBar, Icon } from "@/index.js";
 export default {
   name: "NavBarDemo",
   components: { NavBar, Icon },
@@ -58,6 +57,7 @@ export default {
 <style lang="scss" scoped>
 .left-custom {
   display: flex;
+
   align-items: center;
 }
 </style>

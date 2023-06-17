@@ -59,12 +59,11 @@
 </template>
 <script>
 import { NavBar, CellGroup, Cell, Switch, Radio, RadioGroup } from "@/index.js";
-import XZYPopup from "./XZYPopup.vue";
+import XZYPopup from "../components/XZYPopup.vue";
 import { LANGUAGE, DARK_THEME, LIGHT_THEME } from "../statics/js/enums";
 import { generateCssVars, isDarkMode } from "../utils/theme";
 import { setLanguage } from "../utils/i18n";
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: "Home",
   components: {
     NavBar,

@@ -53,6 +53,7 @@ export default {
   },
   methods: {
     hidePopup() {
+      console.log(111);
       this.$emit("input", false);
     },
     onConfirm() {

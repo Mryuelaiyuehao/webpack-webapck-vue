@@ -12,7 +12,7 @@ module.exports = {
   mode: "production",
   devtool: false,
   entry: {
-    index: path.resolve(__dirname, "./index.js"),
+    index: path.resolve(__dirname, "./preview/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -69,6 +69,11 @@ module.exports = {
         use: ["vue-loader"],
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader",
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
@@ -78,7 +83,12 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           "css-loader",
           "postcss-loader",
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              additionalData: `@import "~@/assets/css/variables.scss";`,
+            },
+          },
         ],
       },
     ],
@@ -91,7 +101,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./public/index.html"),
       filename: "index.html",
-      title: "webpack 中使用vue",
+      title: "Vue 组件",
+      favicon: path.resolve(__dirname, "./preview/statics/img/favicon.ico"),
     }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),

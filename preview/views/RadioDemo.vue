@@ -10,10 +10,10 @@
     <card :title="$t('common.radioDemo1')">
       <CellGroup>
         <Cell
-          v-for="({ title, value }, index) in cellList1"
+          v-for="(item, index) in cellList1"
           :key="index"
-          :title="title"
-          :value="value"
+          :title="item.title"
+          :value="item.value"
           is-link
           center
           clickable
@@ -24,10 +24,10 @@
     <card :title="$t('common.radioDemo2')">
       <CellGroup>
         <Cell
-          v-for="({ title, value }, index) in cellList2"
+          v-for="(item, index) in cellList2"
           :key="index"
-          :title="title"
-          :value="value"
+          :title="item.title"
+          :value="item.value"
           is-link
           center
           clickable
@@ -42,31 +42,31 @@
     >
       <RadioGroup v-model="value" @change="onChange1">
         <Radio
-          v-for="({ desc, name, label }, index) in radioList2"
+          v-for="(item, index) in radioList2"
           :key="index"
-          :name="name"
-          :label="label"
-          :desc="desc"
+          :name="item.name"
+          :label="item.label"
+          :desc="item.desc"
         />
       </RadioGroup>
     </XZYPopup>
     <XZYPopup v-model="show2" :title="$t('common.radioDemo2Title1')">
       <RadioGroup v-model="value2" @change="onChange2">
         <Radio
-          v-for="({ desc, name, label, disabled }, index) in radioList2"
+          v-for="(item, index) in radioList2"
           :key="index"
-          :name="name"
-          :label="label"
-          :desc="desc"
-          :disabled="disabled"
+          :name="item.name"
+          :label="item.label"
+          :desc="item.desc"
+          :disabled="item.disabled"
         />
       </RadioGroup>
     </XZYPopup>
   </base-view>
 </template>
 <script>
-import { Radio, RadioGroup, CellGroup, Cell, NavBar } from "../../../index.js";
-import XZYPopup from "../../../../preview/components/Popup.vue";
+import { Radio, RadioGroup, CellGroup, Cell, NavBar } from "@/index.js";
+import XZYPopup from "../components/XZYPopup.vue";
 export default {
   name: "RadioDemo",
   components: { Radio, RadioGroup, CellGroup, Cell, NavBar, XZYPopup },

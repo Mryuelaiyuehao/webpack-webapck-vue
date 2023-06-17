@@ -1,11 +1,7 @@
 <template>
   <div :class="classNames" @click="handleClick">
     <slot name="icon">
-      <!-- <Icon
-        v-if="icon"
-        :name="icon"
-        :size="30"
-      /> -->
+      <Icon v-if="icon" :name="icon" :size="36" />
     </slot>
     <div :class="`${baseName}-title`">
       <slot name="title">
@@ -23,18 +19,18 @@
       </slot>
     </div>
     <slot name="right-icon">
-      <template v-if="isLink">
-        <Icon
-          :class="`${baseName}-right-icon`"
-          name="arrow_right_line"
-          :size="30"
-        />
-      </template>
+      <Icon
+        v-if="isLink"
+        :class="`${baseName}-right-icon`"
+        name="arrow_right_line"
+        color="textSecondary"
+        :size="36"
+      />
     </slot>
   </div>
 </template>
 <script>
-import { Icon } from "@/index.js";
+import Icon from "../icon/index.vue";
 import { PREFIX_NAME } from "@/assets/js/enums";
 export default {
   name: `${PREFIX_NAME}-cell`,
@@ -84,11 +80,10 @@ export default {
     },
     center: {
       type: Boolean,
-      default: () => false,
+      default: () => true,
     },
   },
   data() {
-    console.log(Icon.name);
     return {
       baseName: `${PREFIX_NAME}-cell`,
     };

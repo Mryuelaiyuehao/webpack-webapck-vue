@@ -7,15 +7,12 @@ import Card from "./components/Card.vue";
 import "@/assets/font/index.js";
 import "@/assets/css/normalize.css";
 import "@/assets/css/reset.scss";
-import "./utils/rem.js";
-import { generateCssVars, isDarkMode } from "./utils/theme";
 import routes from "./route/index.js";
-import { LANGUAGE, DARK_THEME, LIGHT_THEME } from "./statics/js/enums";
+import { LANGUAGE } from "./statics/js/enums";
 import messages from "./languages/index.js";
 
 // 全局组件
 Vue.component("BaseView", BaseView);
-// eslint-disable-next-line vue/multi-word-component-names
 Vue.component("Card", Card);
 // 设置多语言(默认中文)
 Vue.use(VueI18n);
@@ -31,11 +28,7 @@ const router = new VueRouter({
   routes,
 });
 Vue.use(VueRouter);
-//  设置主题
-generateCssVars(
-  isDarkMode() ? DARK_THEME.primary : LIGHT_THEME.primary,
-  isDarkMode()
-);
+
 new Vue({
   i18n,
   router,
