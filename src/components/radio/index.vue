@@ -17,7 +17,7 @@
 import { Icon } from "@/index.js";
 import { PREFIX_NAME } from "@/assets/js/enums";
 export default {
-  name: `${PREFIX_NAME}Radio`,
+  name: `${PREFIX_NAME.toUpperCase()}Radio`,
   components: { Icon },
   props: {
     name: {
@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     checked() {
-      return this.$parent.value === this.name;
+      return this.$parent?.value === this.name;
     },
     classNames() {
       const base = this.baseName;

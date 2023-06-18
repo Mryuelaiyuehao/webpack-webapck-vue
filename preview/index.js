@@ -4,17 +4,19 @@ import VueI18n from "vue-i18n";
 import App from "./app.vue";
 import BaseView from "./components/BaseView.vue";
 import Card from "./components/Card.vue";
+import Popup from "./components/Popup.vue";
 import "@/assets/font/index.js";
 import "@/assets/css/normalize.css";
 import "@/assets/css/reset.scss";
-import routes from "./route/index.js";
+import router from "./route/index.js";
 import { LANGUAGE } from "./statics/js/enums";
 import messages from "./languages/index.js";
 
 // 全局组件
 Vue.component("BaseView", BaseView);
 Vue.component("Card", Card);
-// 设置多语言(默认中文)
+Vue.component("Popup", Popup);
+// 多语言(默认中文)
 Vue.use(VueI18n);
 const i18n = new VueI18n({
   locale: LANGUAGE.CHINESE,
@@ -23,10 +25,6 @@ const i18n = new VueI18n({
 });
 window.$i18n = i18n;
 // 路由
-const router = new VueRouter({
-  mode: "history",
-  routes,
-});
 Vue.use(VueRouter);
 
 new Vue({

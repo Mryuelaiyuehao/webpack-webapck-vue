@@ -1,13 +1,13 @@
 <template>
-  <base-view>
-    <NavBar
+  <BaseView>
+    <xzy-nav-bar
       slot="header"
       :title="$t('common.buttonTitle')"
       type="white"
       left-arrow
       @click-left="goBack"
     />
-    <card :title="$t('common.buttonDemo1')">
+    <Card :title="$t('common.buttonDemo1')">
       <div class="button-wrapper">
         <xzy-button
           v-for="{ text, type } in buttonList1"
@@ -16,8 +16,8 @@
           :type="type"
         />
       </div>
-    </card>
-    <card :title="$t('common.buttonDemo2')">
+    </Card>
+    <Card :title="$t('common.buttonDemo2')">
       <div class="button-wrapper">
         <xzy-button
           v-for="({ text, type, round }, index) in buttonList2"
@@ -27,8 +27,8 @@
           :round="round"
         />
       </div>
-    </card>
-    <card :title="$t('common.buttonDemo3')">
+    </Card>
+    <Card :title="$t('common.buttonDemo3')">
       <div class="button-wrapper">
         <xzy-button
           v-for="({ text, type, size }, index) in buttonList3"
@@ -38,8 +38,8 @@
           :size="size"
         />
       </div>
-    </card>
-    <card :title="$t('common.buttonDemo4')">
+    </Card>
+    <Card :title="$t('common.buttonDemo4')">
       <div class="button-wrapper">
         <xzy-button
           v-for="({ text, type }, index) in buttonList1"
@@ -49,8 +49,8 @@
           disabled
         />
       </div>
-    </card>
-    <card :title="$t('common.buttonDemo5')">
+    </Card>
+    <Card :title="$t('common.buttonDemo5')">
       <div class="button-wrapper">
         <xzy-button
           v-for="({ text, type }, index) in buttonList1"
@@ -60,8 +60,8 @@
           block
         />
       </div>
-    </card>
-    <card :title="$t('common.buttonDemo6')">
+    </Card>
+    <Card :title="$t('common.buttonDemo6')">
       <div class="button-wrapper">
         <xzy-button
           v-for="({ text, type, icon, iconPosition }, index) in buttonList4"
@@ -72,15 +72,15 @@
           :icon-position="iconPosition"
         />
       </div>
-    </card>
-  </base-view>
+    </Card>
+  </BaseView>
 </template>
 <script>
 import { NavBar, Button } from "@/index.js";
 import { BUTTON_TYPE } from "@/components/button/enums.js";
 export default {
   name: "NavBarDemo",
-  components: { "xzy-button": Button, NavBar },
+  components: { "xzy-button": Button, "xzy-nav-bar": NavBar },
   data() {
     return {
       buttonList1: [

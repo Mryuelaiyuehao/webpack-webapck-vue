@@ -6,10 +6,16 @@
 
 已解决，通过引入 babel 解决
 
-# 3 刷新后，报错
+# 3 调试环境跳转子路由后，强制刷新浏览器，报错
+
+已解决，webpack 配置文件中修改 devServer > historyApiFallback=true
 
 # 4 打生产包问题
 
 # 5 ico 图标引入不生效问题
 
 已解决，清空浏览区缓存
+
+# 6 icon Demo
+
+已解决

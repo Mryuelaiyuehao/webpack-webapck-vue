@@ -1,17 +1,17 @@
 <template>
-  <Popup
+  <xzy-popup
     :value="value"
     position="bottom"
     :custom-style="customStyle"
     round
     @input="hidePopup"
   >
-    <base-view>
+    <BaseView>
       <template slot="header">
-        <NavBar v-if="single" :title="title" @click-right="hidePopup">
-          <Icon slot="right" name="close_line" :size="42" />
-        </NavBar>
-        <NavBar
+        <xzy-nav-bar v-if="single" :title="title" @click-right="hidePopup">
+          <xzy-icon slot="right" name="close_line" :size="42" />
+        </xzy-nav-bar>
+        <xzy-nav-bar
           v-else
           :title="title"
           :left-text="$t('common.cancel')"
@@ -21,14 +21,14 @@
         />
       </template>
       <slot />
-    </base-view>
-  </Popup>
+    </BaseView>
+  </xzy-popup>
 </template>
 <script>
-import { NavBar, Popup, Icon } from "@/index.js";
+import { NavBar, Popup, Icon } from "@";
 export default {
-  name: "XZYPopup",
-  components: { NavBar, Popup, Icon },
+  name: "Popup",
+  components: { "xzy-nav-bar": NavBar, "xzy-popup": Popup, "xzy-icon": Icon },
   props: {
     value: {
       type: Boolean,
@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     hidePopup() {
-      console.log(111);
       this.$emit("input", false);
     },
     onConfirm() {

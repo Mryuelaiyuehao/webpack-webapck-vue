@@ -93,7 +93,12 @@
       "language": "语言",
       "chinese": "中文",
       "english": "English",
-      "languageTip": "请选择语言"
+      "languageTip": "请选择语言",
+      "iconDemo1": "基础用法",
+      "iconDemo2": "图标颜色",
+      "iconDemo3": "图标大小",
+      "iconDemo4": "穷举 - 线性风格",
+      "iconDemo5": "穷举 - 面性风格"
     }
   }
 }

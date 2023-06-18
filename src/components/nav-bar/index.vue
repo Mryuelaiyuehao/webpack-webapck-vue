@@ -28,7 +28,7 @@ import { PREFIX_NAME } from "@/assets/js/enums";
 import { Icon } from "@/index.js";
 import { NAVBAR_TYPE } from "@/components/nav-bar/enums.js";
 export default {
-  name: `${PREFIX_NAME}NavBar`,
+  name: `${PREFIX_NAME.toUpperCase()}NavBar`,
   components: {
     Icon,
   },

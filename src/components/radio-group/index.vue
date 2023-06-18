@@ -6,7 +6,7 @@
 <script>
 import { PREFIX_NAME } from "@/assets/js/enums";
 export default {
-  name: `${PREFIX_NAME}RadioGroup`,
+  name: `${PREFIX_NAME.toUpperCase()}RadioGroup`,
   props: {
     value: {
       type: [String, Number],

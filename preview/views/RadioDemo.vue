@@ -1,13 +1,13 @@
 <template>
-  <base-view>
-    <NavBar
+  <BaseView>
+    <xzy-nav-bar
       slot="header"
       :title="$t('common.radioTitle')"
       type="white"
       left-arrow
       @click-left="goBack"
     />
-    <card :title="$t('common.radioDemo1')">
+    <Card :title="$t('common.radioDemo1')">
       <CellGroup>
         <Cell
           v-for="(item, index) in cellList1"
@@ -20,8 +20,8 @@
           @click="showPopup1"
         />
       </CellGroup>
-    </card>
-    <card :title="$t('common.radioDemo2')">
+    </Card>
+    <Card :title="$t('common.radioDemo2')">
       <CellGroup>
         <Cell
           v-for="(item, index) in cellList2"
@@ -34,8 +34,8 @@
           @click="showPopup2"
         />
       </CellGroup>
-    </card>
-    <XZYPopup
+    </Card>
+    <Popup
       v-model="show1"
       :title="$t('common.radioDemo1Title1')"
       :custom-style="customStyle"
@@ -49,8 +49,8 @@
           :desc="item.desc"
         />
       </RadioGroup>
-    </XZYPopup>
-    <XZYPopup v-model="show2" :title="$t('common.radioDemo2Title1')">
+    </Popup>
+    <Popup v-model="show2" :title="$t('common.radioDemo2Title1')">
       <RadioGroup v-model="value2" @change="onChange2">
         <Radio
           v-for="(item, index) in radioList2"
@@ -61,15 +61,14 @@
           :disabled="item.disabled"
         />
       </RadioGroup>
-    </XZYPopup>
-  </base-view>
+    </Popup>
+  </BaseView>
 </template>
 <script>
 import { Radio, RadioGroup, CellGroup, Cell, NavBar } from "@/index.js";
-import XZYPopup from "../components/XZYPopup.vue";
 export default {
   name: "RadioDemo",
-  components: { Radio, RadioGroup, CellGroup, Cell, NavBar, XZYPopup },
+  components: { Radio, RadioGroup, CellGroup, Cell, "xzy-nav-bar": NavBar },
   data() {
     return {
       show1: false,

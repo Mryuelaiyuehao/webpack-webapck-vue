@@ -93,7 +93,12 @@
       "language": "language",
       "chinese": "中文",
       "english": "English",
-      "languageTip": "Please select a language"
+      "languageTip": "Please select a language",
+      "iconDemo1": "Basic usage",
+      "iconDemo2": "Icon Color",
+      "iconDemo3": "Icon Size",
+      "iconDemo4": "Exhaustive - Line Style",
+      "iconDemo5": "Exhaustive - Facial Style"
     }
   }
 }

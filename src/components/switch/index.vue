@@ -8,7 +8,7 @@ import { PREFIX_NAME } from "@/assets/js/enums";
 import { SWITCH_SIZE } from "@/components/switch/enums.js";
 import { handleColor } from "@/utils/index";
 export default {
-  name: `${PREFIX_NAME}Switch`,
+  name: `${PREFIX_NAME.toUpperCase()}Switch`,
   props: {
     value: {
       type: Boolean,

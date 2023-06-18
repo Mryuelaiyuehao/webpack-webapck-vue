@@ -34,7 +34,7 @@ import {
 } from "@/components/button/enums.js";
 import { Icon } from "@/index.js";
 export default {
-  name: `${PREFIX_NAME}-cell`,
+  name: `${PREFIX_NAME.toUpperCase()}Button`,
   components: {
     Icon,
   },

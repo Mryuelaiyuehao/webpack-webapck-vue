@@ -21,7 +21,7 @@ import {
   POPUP_CLOSE_POSITION,
 } from "@/components/popup/enums.js";
 export default {
-  name: `${PREFIX_NAME}Popup`,
+  name: `${PREFIX_NAME.toUpperCase()}Popup`,
   components: {
     Icon,
   },

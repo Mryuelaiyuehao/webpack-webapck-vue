@@ -1,19 +1,19 @@
 <template>
-  <base-view>
-    <NavBar
+  <BaseView>
+    <xzy-nav-bar
       slot="header"
       :title="$t('common.switchTitle')"
       type="white"
       left-arrow
       @click-left="goBack"
     />
-    <card :title="$t('common.switchDemo1')">
+    <Card :title="$t('common.switchDemo1')">
       <xzy-switch v-model="checked" />
-    </card>
-    <card :title="$t('common.switchDemo2')">
+    </Card>
+    <Card :title="$t('common.switchDemo2')">
       <xzy-switch v-model="checked" disabled />
-    </card>
-    <card :title="$t('common.switchDemo3')">
+    </Card>
+    <Card :title="$t('common.switchDemo3')">
       <div class="switch-wrapper">
         <xzy-switch
           v-for="size in switchList()"
@@ -22,22 +22,22 @@
           :size="size"
         />
       </div>
-    </card>
-    <card :title="$t('common.switchDemo4')">
+    </Card>
+    <Card :title="$t('common.switchDemo4')">
       <xzy-switch
         v-model="checked"
         active-color="warning"
         inactive-color="danger"
       />
-    </card>
-  </base-view>
+    </Card>
+  </BaseView>
 </template>
 <script>
 import { Switch, NavBar } from "@/index.js";
 import { SWITCH_SIZE } from "@/components/switch/enums.js";
 export default {
   name: "SwitchDemo",
-  components: { "xzy-switch": Switch, NavBar },
+  components: { "xzy-switch": Switch, "xzy-nav-bar": NavBar },
   props: {},
   data() {
     return {

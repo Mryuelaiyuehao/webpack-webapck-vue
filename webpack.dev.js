@@ -1,8 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
-// const BundleAnalyzerPlugin =
-//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -105,14 +103,12 @@ module.exports = {
       favicon: path.resolve(__dirname, "./preview/statics/img/favicon.ico"),
     }),
     new VueLoaderPlugin(),
-    // new BundleAnalyzerPlugin({
-    //   openAnalyzer: false,
-    // }),
   ],
   devServer: {
-    host: "127.0.0.1",
+    host: "192.168.101.4",
     hot: true,
     open: false,
-    port: 8899,
+    port: 8080,
+    historyApiFallback: true,
   },
 };

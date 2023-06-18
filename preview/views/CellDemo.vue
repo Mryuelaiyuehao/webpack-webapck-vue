@@ -1,26 +1,26 @@
 <template>
-  <base-view>
-    <NavBar
+  <BaseView>
+    <xzy-nav-bar
       slot="header"
       :title="$t('common.cellTitle')"
       type="white"
       left-arrow
       @click-left="goBack"
     />
-    <card :title="$t('common.cellDemo1')">
-      <CellGroup>
-        <Cell
+    <Card :title="$t('common.cellDemo1')">
+      <xzy-cell-group>
+        <xzy-cell
           v-for="({ title, value, label }, index) in cellList1()"
           :key="index"
           :title="title"
           :value="value"
           :label="label"
         />
-      </CellGroup>
-    </card>
-    <card :title="$t('common.cellDemo2')">
-      <CellGroup>
-        <Cell
+      </xzy-cell-group>
+    </Card>
+    <Card :title="$t('common.cellDemo2')">
+      <xzy-cell-group>
+        <xzy-cell
           v-for="({ title, value, label }, index) in cellList1()"
           :key="index"
           :title="title"
@@ -28,11 +28,11 @@
           :label="label"
           center
         />
-      </CellGroup>
-    </card>
-    <card :title="$t('common.cellDemo3')">
-      <CellGroup>
-        <Cell
+      </xzy-cell-group>
+    </Card>
+    <Card :title="$t('common.cellDemo3')">
+      <xzy-cell-group>
+        <xzy-cell
           v-for="({ title, value, label }, index) in cellList1()"
           :key="index"
           :title="title"
@@ -41,11 +41,11 @@
           is-link
           center
         />
-      </CellGroup>
-    </card>
-    <card :title="$t('common.cellDemo4')">
-      <CellGroup>
-        <Cell
+      </xzy-cell-group>
+    </Card>
+    <Card :title="$t('common.cellDemo4')">
+      <xzy-cell-group>
+        <xzy-cell
           v-for="({ title, value, label }, index) in cellList1()"
           :key="index"
           :title="title"
@@ -54,11 +54,11 @@
           clickable
           center
         />
-      </CellGroup>
-    </card>
-    <card :title="$t('common.cellDemo5')">
-      <CellGroup>
-        <Cell
+      </xzy-cell-group>
+    </Card>
+    <Card :title="$t('common.cellDemo5')">
+      <xzy-cell-group>
+        <xzy-cell
           v-for="({ title, value, label }, index) in cellList1()"
           :key="index"
           :title="title"
@@ -67,15 +67,19 @@
           center
           required
         />
-      </CellGroup>
-    </card>
-  </base-view>
+      </xzy-cell-group>
+    </Card>
+  </BaseView>
 </template>
 <script>
 import { NavBar, Cell, CellGroup } from "@/index.js";
 export default {
   name: "CellDemo",
-  components: { Cell, CellGroup, NavBar },
+  components: {
+    "xzy-cell": Cell,
+    "xzy-cell-group": CellGroup,
+    "xzy-nav-bar": NavBar,
+  },
   data() {
     return {
       cellList1: () => [

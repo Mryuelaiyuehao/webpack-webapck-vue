@@ -7,7 +7,7 @@
 import { handleColor, pxToRem } from "@/utils/index";
 import { PREFIX_NAME } from "@/assets/js/enums";
 export default {
-  name: `${PREFIX_NAME}Icon`,
+  name: `${PREFIX_NAME.toUpperCase()}Icon`,
   props: {
     name: {
       type: String,
@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      iconName: `#${this.name}`,
+      iconName: `#icon-${this.name}`,
       baseName: `${PREFIX_NAME}-icon`,
     };
   },

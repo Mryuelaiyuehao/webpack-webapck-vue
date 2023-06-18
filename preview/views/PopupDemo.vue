@@ -1,13 +1,13 @@
 <template>
-  <base-view>
-    <NavBar
+  <BaseView>
+    <xzy-nav-bar
       slot="header"
       :title="$t('common.popupTitle')"
       type="white"
       left-arrow
       @click-left="goBack"
     />
-    <card :title="$t('common.popupDemo1')">
+    <Card :title="$t('common.popupDemo1')">
       <CellGroup>
         <Cell
           v-for="(item, index) in popupList1()"
@@ -19,8 +19,8 @@
         >
         </Cell>
       </CellGroup>
-    </card>
-    <card :title="$t('common.popupDemo2')">
+    </Card>
+    <Card :title="$t('common.popupDemo2')">
       <CellGroup>
         <Cell
           v-for="(item, index) in popupList2()"
@@ -32,8 +32,8 @@
         >
         </Cell>
       </CellGroup>
-    </card>
-    <card :title="$t('common.popupDemo3')">
+    </Card>
+    <Card :title="$t('common.popupDemo3')">
       <CellGroup>
         <Cell
           v-for="(item, index) in popupList3()"
@@ -45,8 +45,8 @@
         >
         </Cell>
       </CellGroup>
-    </card>
-    <card :title="$t('common.popupDemo4')">
+    </Card>
+    <Card :title="$t('common.popupDemo4')">
       <CellGroup>
         <Cell
           v-for="(item, index) in popupList4()"
@@ -58,37 +58,37 @@
         >
         </Cell>
       </CellGroup>
-    </card>
-    <Popup v-model="show1" :custom-style="customStyle1"></Popup>
-    <Popup
+    </Card>
+    <xzy-popup v-model="show1" :custom-style="customStyle1"></xzy-popup>
+    <xzy-popup
       v-model="show2"
       :custom-style="customStyle2"
       :position="position"
-    ></Popup>
-    <Popup
+    ></xzy-popup>
+    <xzy-popup
       v-model="show3"
       :custom-style="customStyle1"
       :overlay="false"
       closeable
-    ></Popup>
-    <Popup
+    ></xzy-popup>
+    <xzy-popup
       v-model="show4"
       :custom-style="customStyle1"
       closeable
       :close-icon-position="closeIconPosition"
-    ></Popup>
-  </base-view>
+    ></xzy-popup>
+  </BaseView>
 </template>
 <script>
-import { Cell, CellGroup, Popup, NavBar } from "@/index.js";
 import { POPUP_CLOSE_POSITION, POPUP_POSITION } from "@/components/popup/enums";
+import { Cell, CellGroup, Popup, NavBar } from "@/index.js";
 export default {
   name: "PopupDemo",
   components: {
-    Popup,
+    "xzy-popup": Popup,
     Cell,
     CellGroup,
-    NavBar,
+    "xzy-nav-bar": NavBar,
   },
   data() {
     return {

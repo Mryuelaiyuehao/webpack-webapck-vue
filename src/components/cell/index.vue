@@ -33,7 +33,7 @@
 import Icon from "../icon/index.vue";
 import { PREFIX_NAME } from "@/assets/js/enums";
 export default {
-  name: `${PREFIX_NAME}-cell`,
+  name: `${PREFIX_NAME.toUpperCase()}Cell`,
   components: {
     Icon,
   },
